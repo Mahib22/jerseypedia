@@ -1,0 +1,19 @@
+body {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.league-card img {
+    max-height: 100px;
+}
+
+.league-card .card {
+    border-radius: 15px;
+}
+
+footer p {
+    font-size: 18px;
+}
