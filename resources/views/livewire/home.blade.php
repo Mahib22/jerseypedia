@@ -10,7 +10,7 @@
         <h3><strong>Pilih Liga</strong></h3>
         <div class="row mt-4">
             @foreach ($leagues as $league)
-            <div class="col">
+            <div class="col-md-3">
                 <div class="card shadow">
                     <div class="card-body text-center">
                         <img class="img-fluid" src="{{ url('assets/league') }}/{{ $league->img }}" alt="{{ $league->name }}">
@@ -26,7 +26,7 @@
         <h3><strong>Produk Terlaris</strong></h3>
         <div class="row mt-4">
             @foreach ($products as $product)
-            <div class="col">
+            <div class="col-md-3">
                 <div class="card">
                     <div class="card-body text-center">
                         <img class="img-fluid" src="{{ url('assets/jersey') }}/{{ $product->img }}" alt="{{ $product->name }}">
