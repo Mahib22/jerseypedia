@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $fillable = [
+        'order_code',
+        'status',
+        'total_price',
+        'unique_code',
+        'user_id',
+    ];
+
     // One to Many dengan Order Detail
     // Setiap order punya banyak order detail
     public function order_details() {
