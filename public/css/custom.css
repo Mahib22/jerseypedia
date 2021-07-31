@@ -32,3 +32,7 @@ footer p {
 .btn-success {
     border-radius: 10px;
 }
+
+.color-dark {
+    color: black;
+}

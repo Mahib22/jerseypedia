@@ -11,11 +11,13 @@
         <div class="row mt-4">
             @foreach ($leagues as $league)
             <div class="col-md-3">
-                <div class="card shadow">
-                    <div class="card-body text-center">
-                        <img class="img-fluid" src="{{ url('assets/league') }}/{{ $league->img }}" alt="{{ $league->name }}">
+                <a href="{{ route('products.league', $league->id) }}">
+                    <div class="card shadow">
+                        <div class="card-body text-center">
+                            <img class="img-fluid" src="{{ url('assets/league') }}/{{ $league->img }}" alt="{{ $league->name }}">
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             @endforeach
         </div>
@@ -23,7 +25,10 @@
 
     {{-- Best Product --}}
     <section class="best-products mt-5">
-        <h3><strong>Produk Terlaris</strong></h3>
+        <h3>
+            <strong>Produk Terlaris</strong>
+            <a href="{{ route('products') }}" class="float-right"><i class="fas fa-chevron-right color-dark"></i></a>
+        </h3>
         <div class="row mt-4">
             @foreach ($products as $product)
             <div class="col-md-3">

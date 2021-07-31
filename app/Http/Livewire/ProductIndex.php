@@ -21,7 +21,8 @@ class ProductIndex extends Component
             $products = Product::paginate(8);
         }
         return view('livewire.product-index', [
-            'products' => $products
+            'products' => $products,
+            'title' => 'List Jersey'
         ]);
     }
 

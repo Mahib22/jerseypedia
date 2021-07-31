@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="col-md-9">
-            <h1>List Jersey</h1>
+            <h1>{{ $title }}</h1>
         </div>
         <div class="col-md-3">
             <div class="input-group">
