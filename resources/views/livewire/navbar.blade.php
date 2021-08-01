@@ -26,6 +26,9 @@
                             <li><a class="dropdown-item" href="{{ route('products') }}">Semua Liga</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('history') }}">History</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
