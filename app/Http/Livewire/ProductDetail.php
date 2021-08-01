@@ -56,6 +56,7 @@ class ProductDetail extends Component
 
         } else {
             $order->total_price = $order->total_price + $total_price;
+            $order->update();
         }
 
         //menyimpan pesanan detail
@@ -66,6 +67,7 @@ class ProductDetail extends Component
             'total_price' => $total_price
         ]);
 
+        $this->emit('addCart');
         session()->flash('message', 'Berhasil Ditambahkan ke Keranjang');
         return redirect()->back();
         

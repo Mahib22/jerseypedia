@@ -19,3 +19,4 @@ Route::livewire('/', 'home')->name('home');
 Route::livewire('/products', 'product-index')->name('products');
 Route::livewire('/products/liga/{id}', 'product-league')->name('products.league');
 Route::livewire('/products/{id}', 'product-detail')->name('products.detail');
+Route::livewire('/keranjang', 'cart')->name('cart');

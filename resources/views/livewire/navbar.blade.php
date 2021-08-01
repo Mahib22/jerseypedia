@@ -30,6 +30,14 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cart') }}">
+                            Keranjang <i class="fas fa-shopping-bag"></i>
+                            @if ($order_quantity !== 0)
+                                <span class="badge bg-danger text-white">{{ $order_quantity }}</span>
+                            @endif
+                        </a>
+                    </li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
