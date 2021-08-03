@@ -2,7 +2,7 @@
     
     {{-- BANNER --}}
     <div class="banner">
-        <img src="{{ url('assets/slider/slider1.png') }}" alt="banner">
+        <img src="{{ url('assets/slider/slider.jpg') }}" alt="banner">
     </div>
 
     {{-- League Card --}}
@@ -26,8 +26,7 @@
     {{-- Best Product --}}
     <section class="best-products mt-5">
         <h3>
-            <strong>Produk Terlaris</strong>
-            <a href="{{ route('products') }}" class="float-right"><i class="fas fa-chevron-right color-dark"></i></a>
+            <strong>Produk Terbaru</strong>
         </h3>
         <div class="row mt-4">
             @foreach ($products as $product)

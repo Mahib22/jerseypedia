@@ -30,11 +30,13 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
+                    <li class="nav-item mr-2">
                         <a class="nav-link" href="{{ route('cart') }}">
-                            Keranjang <i class="fas fa-shopping-bag"></i>
+                            Keranjang <i class="fas fa-shopping-cart"></i>
                             @if ($order_quantity !== 0)
-                                <span class="badge bg-danger text-white">{{ $order_quantity }}</span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge text-white bg-danger">
+                                    {{ $order_quantity }}
+                                </span>
                             @endif
                         </a>
                     </li>
@@ -55,6 +57,10 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="#"><i class="far fa-heart"></i> Wishlist</a>
+                                </li>
+
                                 <li>
                                     <a class="dropdown-item" href="{{ route('history') }}"><i class="fas fa-history"></i> History</a>
                                 </li>
