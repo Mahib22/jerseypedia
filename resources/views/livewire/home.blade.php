@@ -10,7 +10,7 @@
         <h3><strong>Pilih Liga</strong></h3>
         <div class="row mt-4">
             @foreach ($leagues as $league)
-            <div class="col-md-3">
+            <div class="col-md-3 mb-2">
                 <a href="{{ route('products.league', $league->id) }}">
                     <div class="card shadow">
                         <div class="card-body text-center">
@@ -30,21 +30,12 @@
         </h3>
         <div class="row mt-4">
             @foreach ($products as $product)
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <img class="img-fluid" src="{{ url('assets/jersey') }}/{{ $product->img }}" alt="{{ $product->name }}">
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <h5><strong>{{ $product->name }}</strong></h5>
-                                <h5>Rp {{ number_format($product->price) }}</h5>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <a href="{{ route('products.detail', $product->id) }}" class="btn btn-success btn-block">Detail</a>
-                            </div>
-                        </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ url('assets/jersey') }}/{{ $product->img }}" alt="{{ $product->name }}">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ route('products.detail', $product->id) }}" class="stretched-link text-decoration-none text-dark"><strong>{{ $product->name }}</strong></a></h5>
+                        <h5 class="card-text">Rp {{ number_format($product->price) }}</h5>
                     </div>
                 </div>
             </div>

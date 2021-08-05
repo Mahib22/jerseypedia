@@ -5,7 +5,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-dark">Home</a></li>
                   <li class="breadcrumb-item"><a href="{{ route('products') }}" class="text-dark">List Jersey</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Detail Jersey</li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
                 </ol>
             </nav>
         </div>
