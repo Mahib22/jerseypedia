@@ -4,7 +4,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-dark">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">List Jersey</li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
                 </ol>
             </nav>
         </div>
@@ -27,7 +27,7 @@
     <section class="products">
         <div class="row mt-4">
             @foreach ($products as $product)
-            <div class="col-md-3 mb-3">
+            <div class="col-6 col-md-3 mb-3">
                 <div class="card h-100">
                     <img class="card-img-top" src="{{ url('assets/jersey') }}/{{ $product->img }}" alt="{{ $product->name }}">
                     <div class="card-body">

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-3">
     <div class="row mb-2 mt-4">
         <div class="col">
             <nav aria-label="breadcrumb">
@@ -22,12 +22,15 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4 mb-3">
             <div class="card product-img">
-                <div class="card-body"><img class="img-fluid" src="{{ url('assets/jersey') }}/{{ $product->img }}" alt="{{ $product->name }}"></div>
+                <div class="card-body">
+                    <img class="img-fluid" src="{{ url('assets/jersey') }}/{{ $product->img }}" alt="{{ $product->name }}">
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
+
+        <div class="col-md-5 mb-3">
             <h2>
                 <strong>{{ $product->name }}</strong>
             </h2>
@@ -42,19 +45,25 @@
             <h4>Berat : {{ $product->weight }}</h4>
             <h4>Deskripsi Produk :</h4>
             <h5>{{ $product->description }}</h5>
-            <hr>
-            <form wire:submit.prevent="addToCart">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Jumlah Pesanan</span>
-                    <input type="number" class="form-control @error('order_quantity') is-invalid @enderror" wire:model="order_quantity" required>
-                    @error('order_quantity')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">Jumlah Pesanan</div>
+                <div class="card-body">
+                    <form wire:submit.prevent="addToCart">
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control @error('order_quantity') is-invalid @enderror" wire:model="order_quantity" required min="1">
+                            @error('order_quantity')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" @if($product->is_ready !== 1) disabled @endif><i class="fas fa-plus mr-2"></i> Tambah ke Keranjang</button>
+                    </form>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block" @if($product->is_ready !== 1) disabled @endif><i class="fas fa-shopping-cart"></i> Tambah ke Keranjang</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
