@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Order;
 use App\OrderDetail;
+use App\Wishlist;
 
 class ProductDetail extends Component
 {
@@ -71,5 +72,22 @@ class ProductDetail extends Component
         session()->flash('message', 'Berhasil Ditambahkan ke Keranjang');
         return redirect()->back();
         
+    }
+
+    public function addToWishlist(){
+        //validasi jika belum login
+        if (!Auth::user()) {
+            return redirect()->route('login');
+        }
+
+        //menyimpan data
+        Wishlist::create([
+            'product_id' => $this->product->id,
+            'user_id' => Auth::user()->id
+        ]);
+
+        $this->emit('addWishlist');
+        session()->flash('message', 'Berhasil Ditambahkan ke Wishlist');
+        return redirect()->back();
     }
 }

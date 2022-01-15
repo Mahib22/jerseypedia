@@ -62,6 +62,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" @if($product->is_ready !== 1) disabled @endif><i class="fas fa-plus mr-2"></i> Tambah ke Keranjang</button>
                     </form>
+                    <hr>
+                    <form wire:submit.prevent="addToWishlist">
+                        <button type="submit" class="btn btn-success btn-block"><i class="fas fa-heart mr-2"></i> Tambah ke Wishlist</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -23,4 +23,10 @@ class Product extends Model
     public function order_details() {
         return $this->hasMany(OrderDetail::class, 'product_id', 'id');
     }
+
+    // One to Many dengan Wishlist
+    // Setiap product punya banyak Wishlist
+    public function wishlists() {
+        return $this->hasMany(Wishlist::class, 'product_id', 'id');
+    }
 }

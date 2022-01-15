@@ -38,3 +38,7 @@ footer p {
     border-width: 0;
     border-radius: 20px;
 }
+
+.form-control:focus {
+    box-shadow: none;
+}

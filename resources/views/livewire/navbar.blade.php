@@ -58,7 +58,7 @@
 
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="#"><i class="far fa-heart mr-2"></i> Wishlist</a>
+                                    <a class="dropdown-item" href="{{ route('wishlist') }}"><i class="far fa-heart mr-2"></i> Wishlist</a>
                                 </li>
 
                                 <li>

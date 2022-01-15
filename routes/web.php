@@ -22,3 +22,4 @@ Route::livewire('/products/{id}', 'product-detail')->name('products.detail');
 Route::livewire('/cart', 'cart')->name('cart');
 Route::livewire('/checkout', 'checkout')->name('checkout');
 Route::livewire('/history', 'history')->name('history');
+Route::livewire('/wishlist', 'product-wishlist')->name('wishlist');
