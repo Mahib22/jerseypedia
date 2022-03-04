@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Order;
 use App\OrderDetail;
-use App\Wishlist;
 
 class ProductDetail extends Component
 {
     public $product, $order_quantity;
 
-    public function mount($id){
+    public function mount($id)
+    {
         $productDetail = Product::find($id);
 
-        if($productDetail){
+        if ($productDetail) {
             $this->product = $productDetail;
         }
     }
@@ -26,7 +26,8 @@ class ProductDetail extends Component
         return view('livewire.product-detail');
     }
 
-    public function addToCart(){
+    public function addToCart()
+    {
         $this->validate([
             'order_quantity' => 'required'
         ]);
@@ -52,9 +53,8 @@ class ProductDetail extends Component
             ]);
 
             $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
-            $order->order_code = 'JP-'.$order->id;
+            $order->order_code = 'JP-' . $order->id;
             $order->update();
-
         } else {
             $order->total_price = $order->total_price + $total_price;
             $order->update();
@@ -71,23 +71,23 @@ class ProductDetail extends Component
         $this->emit('addCart');
         session()->flash('message', 'Berhasil Ditambahkan ke Keranjang');
         return redirect()->back();
-        
     }
 
-    public function addToWishlist(){
-        //validasi jika belum login
+    public function addToWishlist()
+    {
         if (!Auth::user()) {
             return redirect()->route('login');
         }
 
-        //menyimpan data
-        Wishlist::create([
-            'product_id' => $this->product->id,
-            'user_id' => Auth::user()->id
-        ]);
+        if (Auth::user()->hasWishlist($this->product)) {
+            Auth::user()->removeWishlist($this->product);
+            session()->flash('message', 'Berhasil Dihapus dari Wishlist');
+        } else {
+            Auth::user()->addWishlist($this->product);
+            session()->flash('message', 'Berhasil Ditambahkan ke Wishlist');
+        }
 
         $this->emit('addWishlist');
-        session()->flash('message', 'Berhasil Ditambahkan ke Wishlist');
         return redirect()->back();
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,4 @@ Route::livewire('/products/{id}', 'product-detail')->name('products.detail');
 Route::livewire('/cart', 'cart')->name('cart');
 Route::livewire('/checkout', 'checkout')->name('checkout');
 Route::livewire('/history', 'history')->name('history');
-Route::livewire('/wishlist', 'product-wishlist')->name('wishlist');
+Route::livewire('/wishlist', 'product-wishlist')->name('wishlist')->middleware('auth');

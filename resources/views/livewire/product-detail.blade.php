@@ -3,9 +3,10 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-dark">Home</a></li>
-                  <li class="breadcrumb-item"><a href="{{ route('products') }}" class="text-dark">List Jersey</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-dark">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('products') }}" class="text-dark">List Jersey</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
                 </ol>
             </nav>
         </div>
@@ -13,7 +14,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            @if(session()->has('message'))
+            @if (session()->has('message'))
                 <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
@@ -25,7 +26,8 @@
         <div class="col-md-4 mb-3">
             <div class="card product-img">
                 <div class="card-body">
-                    <img class="img-fluid" src="{{ url('assets/jersey') }}/{{ $product->img }}" alt="{{ $product->name }}">
+                    <img class="img-fluid" src="{{ url('assets/jersey') }}/{{ $product->img }}"
+                        alt="{{ $product->name }}">
                 </div>
             </div>
         </div>
@@ -53,19 +55,38 @@
                 <div class="card-body">
                     <form wire:submit.prevent="addToCart">
                         <div class="input-group mb-3">
-                            <input type="number" class="form-control @error('order_quantity') is-invalid @enderror" wire:model="order_quantity" required min="1">
+                            <input type="number" class="form-control @error('order_quantity') is-invalid @enderror"
+                                wire:model="order_quantity" required min="1">
                             @error('order_quantity')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block" @if($product->is_ready !== 1) disabled @endif><i class="fas fa-plus mr-2"></i> Tambah ke Keranjang</button>
+                        <button type="submit" class="btn btn-primary btn-block"
+                            @if ($product->is_ready !== 1) disabled @endif><i class="fas fa-plus mr-2"></i> Tambah ke
+                            Keranjang</button>
                     </form>
                     <hr>
-                    <form wire:submit.prevent="addToWishlist">
-                        <button type="submit" class="btn btn-success btn-block"><i class="fas fa-heart mr-2"></i> Tambah ke Wishlist</button>
-                    </form>
+                    @if (Auth::check())
+                        <form wire:submit.prevent="addToWishlist">
+                            @if (Auth::user()->wishlists()->where('product_id', $product->id)->first())
+                                <button type="submit" class="btn btn-danger btn-block rounded-pill"><i
+                                        class="fas fa-heart mr-2"></i>
+                                    Hapus dari Wishlist</button>
+                            @else
+                                <button type="submit" class="btn btn-success btn-block rounded-pill"><i
+                                        class="far fa-heart mr-2"></i>
+                                    Tambah ke Wishlist</button>
+                            @endif
+                        </form>
+                    @else
+                        <form wire:submit.prevent="addToWishlist">
+                            <button type="submit" class="btn btn-success btn-block rounded-pill"><i
+                                    class="far fa-heart mr-2"></i>
+                                Tambah ke Wishlist</button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>

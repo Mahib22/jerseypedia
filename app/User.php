@@ -39,13 +39,32 @@ class User extends Authenticatable
 
     // One to Many dengan Order
     // Setiap user punya banyak order
-    public function orders() {
+    public function orders()
+    {
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
 
-    // One to Many dengan Wislist
-    // Setiap user punya banyak Wislist
-    public function wishlists() {
-        return $this->hasMany(Wishlist::class, 'user_id', 'id');
+    // One to Many dengan Wishlist
+    public function wishlists()
+    {
+        return $this->belongsToMany(Product::class, 'wishlists', 'user_id', 'product_id')->withTimestamps();
+    }
+
+    // cek apakah product sudah ada di wishlist atau belum
+    public function hasWishlist(Product $product)
+    {
+        return $this->wishlists()->where('product_id', $product->id)->exists();
+    }
+
+    // tambahkan product ke wishlist
+    public function addWishlist(Product $product)
+    {
+        return $this->wishlists()->save($product);
+    }
+
+    // hapus product dari wishlist
+    public function removeWishlist(Product $product)
+    {
+        return $this->wishlists()->detach($product);
     }
 }
