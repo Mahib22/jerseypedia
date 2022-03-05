@@ -14,15 +14,18 @@ class CategorySeeder extends Seeder
     {
         //
         DB::table('categories')->insert([
-        	'category' => 'Jersey Bola Anak',
+            'category' => 'Jersey Bola Anak',
+            'slug' => 'jersey-bola-anak',
         ]);
 
         DB::table('categories')->insert([
-        	'category' => 'Jersey Bola Pria',
+            'category' => 'Jersey Bola Pria',
+            'slug' => 'jersey-bola-pria',
         ]);
 
         DB::table('categories')->insert([
-        	'category' => 'Jersey Bola Wanita',
+            'category' => 'Jersey Bola Wanita',
+            'slug' => 'jersey-bola-wanita',
         ]);
     }
 }

@@ -68,7 +68,7 @@
                             Keranjang</button>
                     </form>
                     <hr>
-                    @if (Auth::check())
+                    @auth
                         <form wire:submit.prevent="addToWishlist">
                             @if (Auth::user()->wishlists()->where('product_id', $product->id)->first())
                                 <button type="submit" class="btn btn-danger btn-block rounded-pill"><i
@@ -86,7 +86,7 @@
                                     class="far fa-heart mr-2"></i>
                                 Tambah ke Wishlist</button>
                         </form>
-                    @endif
+                    @endauth
                 </div>
             </div>
         </div>

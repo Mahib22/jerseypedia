@@ -12,9 +12,9 @@ class ProductDetail extends Component
 {
     public $product, $order_quantity;
 
-    public function mount($id)
+    public function mount($slug)
     {
-        $productDetail = Product::find($id);
+        $productDetail = Product::where('slug', $slug)->first();
 
         if ($productDetail) {
             $this->product = $productDetail;

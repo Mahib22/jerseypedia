@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->float('weight');
             $table->string('img');
             $table->string('description');
+            $table->string('slug')->unique();
             $table->integer('category_id');
             $table->integer('league_id');
             $table->timestamps();

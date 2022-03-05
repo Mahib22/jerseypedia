@@ -13,11 +13,11 @@ class ProductLeague extends Component
 
     public $search, $league;
     protected $updateQueryString = ['search'];
-    
+
     public function render()
     {
         if ($this->search) {
-            $products = Product::where('league_id', $this->league->id)->where('name', 'like', '%'.$this->search.'%')->paginate(8);
+            $products = Product::where('league_id', $this->league->id)->where('name', 'like', '%' . $this->search . '%')->paginate(8);
         } else {
             $products = Product::where('league_id', $this->league->id)->paginate(8);
         }
@@ -27,14 +27,16 @@ class ProductLeague extends Component
         ]);
     }
 
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
-    public function mount($id){
-        $leagueDetail = League::find($id);
+    public function mount($slug)
+    {
+        $leagueDetail = League::where('slug', $slug)->first();
 
-        if($leagueDetail){
+        if ($leagueDetail) {
             $this->league = $leagueDetail;
         }
     }

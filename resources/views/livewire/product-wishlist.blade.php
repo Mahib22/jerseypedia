@@ -24,7 +24,7 @@
                         <img class="card-img-top" src="{{ url('assets/jersey') }}/{{ $wishlist->img }}"
                             alt="{{ $wishlist->name }}">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="{{ route('products.detail', $wishlist->id) }}"
+                            <h5 class="card-title"><a href="{{ route('products.detail', $wishlist->slug) }}"
                                     class="stretched-link text-decoration-none text-dark"><strong>{{ $wishlist->name }}</strong></a>
                             </h5>
                             <h5 class="card-text">Rp {{ number_format($wishlist->price) }}</h5>
@@ -32,11 +32,8 @@
                     </div>
                 </div>
             @empty
-                <div class="col-12">
-                    <div class="alert alert-info text-center">
-                        <h4 class="alert-heading">Oops!</h4>
-                        <p>You don't have any item in your wishlist.</p>
-                    </div>
+                <div class="col-12 bg-secondary p-3 rounded mx-3">
+                    <h3 class="text-center text-white">Anda belum memiliki barang di wishlist</h3>
                 </div>
             @endforelse
         </div>
