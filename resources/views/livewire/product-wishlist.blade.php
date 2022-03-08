@@ -18,7 +18,7 @@
 
     <section class="products">
         <div class="row mt-4">
-            @forelse (Auth::user()->wishlists as $wishlist)
+            @forelse (Auth::user()->wishlists->sortDesc() as $wishlist)
                 <div class="col-6 col-md-3 mb-3">
                     <div class="card h-100">
                         <img class="card-img-top" src="{{ url('assets/jersey') }}/{{ $wishlist->img }}"
