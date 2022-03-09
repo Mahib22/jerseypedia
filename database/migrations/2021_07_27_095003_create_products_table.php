@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->string('img');
             $table->string('description');
             $table->string('slug')->unique();
-            $table->integer('category_id');
             $table->integer('league_id');
             $table->timestamps();
         });

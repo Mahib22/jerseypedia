@@ -43,7 +43,7 @@
                     <span class="badge bg-danger text-white"><i class="fas fa-times"></i> Stock Habis</span>
                 @endif
             </h4>
-            <h3>Rp {{ number_format($product->price) }}</h3>
+            <h2>Rp {{ number_format($product->price) }}</h2>
 
             <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -57,12 +57,10 @@
             </ul>
             <div class="tab-content mt-2" id="myTabContent">
                 <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
-                    <p>Kondisi : Baru</p>
-                    <p>Berat : {{ $product->weight }}</p>
-                    <p>Kategori : Jersey Bola Pria</p>
-                    <p>Jersey Liga : La Liga</p>
-                    <p>Size tersedia : M, L, XL</p>
-                    <p>Stok tersedia : 10</p>
+                    <h5>Kondisi : <span class="text-secondary">Baru</span></h5>
+                    <h5>Berat : <span class="text-secondary">{{ $product->weight }}</span></h5>
+                    <h5>Kategori : <a href="{{ route('products.league', $product->league->slug) }}"
+                            class="text-decoration-none">Jersey {{ $product->league->name }}</a></h5>
                 </div>
                 <div class="tab-pane fade" id="desc" role="tabpanel" aria-labelledby="desc-tab">
                     <h5>{{ $product->description }}</h5>
@@ -75,14 +73,6 @@
                 <div class="card-body">
                     <form wire:submit.prevent="addToCart">
                         <div class="mb-3">
-                            <label for="size" class="form-label">Pilih Ukuran</label>
-                            <select class="form-control" id="size">
-                                <option value="1">M</option>
-                                <option value="2">L</option>
-                                <option value="3">XL</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
                             <label for="jumlahPesanan" class="form-label">Jumlah Pesanan</label>
                             <input id="jumlahPesanan" type="number"
                                 class="form-control @error('order_quantity') is-invalid @enderror"
@@ -92,11 +82,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="note" class="form-label">Tambah Catatan</label>
-                            <input type="text" class="form-control" placeholder="Contoh: Size M alternate L"
-                                id="note">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block"
                             @if ($product->is_ready !== 1) disabled @endif><i class="fas fa-plus mr-2"></i> Tambah ke
