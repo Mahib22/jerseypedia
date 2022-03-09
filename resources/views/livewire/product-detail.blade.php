@@ -58,7 +58,7 @@
             <div class="tab-content mt-2" id="myTabContent">
                 <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
                     <h5>Kondisi : <span class="text-secondary">Baru</span></h5>
-                    <h5>Berat : <span class="text-secondary">{{ $product->weight }}</span></h5>
+                    <h5>Berat : <span class="text-secondary">{{ $product->weight }} kg</span></h5>
                     <h5>Kategori : <a href="{{ route('products.league', $product->league->slug) }}"
                             class="text-decoration-none">Jersey {{ $product->league->name }}</a></h5>
                 </div>
@@ -104,8 +104,26 @@
                                 Tambah ke Wishlist</button>
                         </form>
                     @endauth
-                    <button class="btn btn-outline-secondary btn-block mt-2"><i class="fas fa-share-alt mr-2"></i>
+                    <button type="button" class="btn btn-outline-secondary btn-block mt-2" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"><i class="fas fa-share-alt mr-2"></i>
                         Bagikan Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Share Link -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5 class="modal-title" id="exampleModalLabel">Bagikan link melalui</h5>
+                <div class="my-3">
+                    {!! Share::page(url('/products/' . $product->slug), null, ['class' => 'fs-25 bg-gray mx-2 p-5-10 rounded-10'], '<ul class="list-unstyled d-flex justify-content-center">', '</ul>')->facebook()->twitter()->whatsapp()->telegram() !!}
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

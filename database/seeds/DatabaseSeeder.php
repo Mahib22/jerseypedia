@@ -13,6 +13,5 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ProductSeeder::class);
         $this->call(LeagueSeeder::class);
-        $this->call(CategorySeeder::class);
     }
 }
