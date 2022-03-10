@@ -3,8 +3,8 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-dark">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">History</li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-dark">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">History</li>
                 </ol>
             </nav>
         </div>
@@ -12,9 +12,12 @@
 
     <div class="row">
         <div class="col-md-12">
-            @if(session()->has('message'))
-                <div class="alert alert-success">
+            @if (session()->has('message'))
+                <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
                     {{ session('message') }}
+                    <button type="button" class="btn" data-bs-dismiss="alert" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
             @endif
         </div>
@@ -35,7 +38,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1 ?>
+                        <?php $no = 1; ?>
                         @forelse ($orders as $order)
                             <tr>
                                 <td>{{ $no++ }}</td>
@@ -46,7 +49,9 @@
                                         $order_details = \App\OrderDetail::where('order_id', $order->id)->get();
                                     @endphp
                                     @foreach ($order_details as $order_detail)
-                                        <img class="img-fluid" src="{{ url('assets/jersey') }}/{{ $order_detail->product->img }}" width="50" alt="{{ $order_detail->product->name }}">
+                                        <img class="img-fluid"
+                                            src="{{ url('assets/jersey') }}/{{ $order_detail->product->img }}"
+                                            width="50" alt="{{ $order_detail->product->name }}">
                                         {{ $order_detail->product->name }}
                                         <br>
                                     @endforeach
@@ -59,8 +64,8 @@
                                     @endif
                                 </td>
                                 <td><strong>
-                                    Rp {{ number_format($order->total_price) }}
-                                </strong></td>
+                                        Rp {{ number_format($order->total_price) }}
+                                    </strong></td>
                             </tr>
                         @empty
                             <tr>

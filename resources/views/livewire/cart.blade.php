@@ -13,8 +13,11 @@
     <div class="row">
         <div class="col-md-12">
             @if (session()->has('message'))
-                <div class="alert alert-danger">
+                <div class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
                     {{ session('message') }}
+                    <button type="button" class="btn" data-bs-dismiss="alert" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
             @endif
         </div>

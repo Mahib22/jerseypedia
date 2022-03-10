@@ -15,8 +15,11 @@
     <div class="row">
         <div class="col-md-12">
             @if (session()->has('message'))
-                <div class="alert alert-success">
+                <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
                     {{ session('message') }}
+                    <button type="button" class="btn" data-bs-dismiss="alert" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
             @endif
         </div>
@@ -117,14 +120,14 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-body">
+            <div class="modal-header d-flex align-items-center">
                 <h5 class="modal-title" id="exampleModalLabel">Bagikan link melalui</h5>
-                <div class="my-3">
-                    {!! Share::page(url('/products/' . $product->slug), null, ['class' => 'fs-25 bg-gray mx-2 p-5-10 rounded-10'], '<ul class="list-unstyled d-flex justify-content-center">', '</ul>')->facebook()->twitter()->whatsapp()->telegram() !!}
-                </div>
-                <div class="d-flex justify-content-end mt-4">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times fs-25"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                {!! Share::page(url('/products/' . $product->slug), null, ['class' => 'fs-25 mx-2 p-5-10 rounded-10'], '<ul class="list-unstyled d-flex justify-content-center">', '</ul>')->facebook()->twitter()->whatsapp()->telegram() !!}
             </div>
         </div>
     </div>
